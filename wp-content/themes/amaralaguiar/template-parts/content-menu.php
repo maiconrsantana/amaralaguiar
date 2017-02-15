@@ -5,7 +5,7 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#"><img src="assets/img/logo.png" alt="Amaral Aguiar - Sociedade de Advogados"></a>
+    <a class="navbar-brand" href="#"><img src="<?php echo get_template_directory_uri().'/files/img/logo.png'; ?>" alt="Amaral Aguiar - Sociedade de Advogados"></a>
 
 
     <div class="row collapse navbar-collapse" id="navbarNavDropdown">
