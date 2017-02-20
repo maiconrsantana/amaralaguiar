@@ -5,12 +5,30 @@ body {
     background: $color-bg url(#{$url-img}/background.jpg) no-repeat top center;
 }
 
-.container-main{
-    min-height: 500px;
+//ajueste menu mobile
+#navbarNavDropdown{
+    z-index: 99;
+}
+
+//title defautl
+h2.custom_amag{
+    font-size: 24px;
+    text-transform: uppercase;
+    
+    &:after{
+        content: '';
+        border-top: solid 3px $color-green;
+        width: 110px;
+        display: block;
+    }
 }
 
 
+
 //custom container
+.container-main{
+    min-height: 500px;
+}
 @media (min-width: $screen-lg-min){
     .container{
         width: 1024px;

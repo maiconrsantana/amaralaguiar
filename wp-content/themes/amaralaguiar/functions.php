@@ -11,7 +11,7 @@
  */
 function amrlagr_scripts() {
 	// Add bootstrap, used in the main stylesheet.
-	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/files/bootstrap/css/bootstrap.css' );
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/files/bootstrap/css/bootstrap.min.css' );
 
 	// Theme stylesheet.
 	wp_enqueue_style( 'amrlagr-style', get_stylesheet_uri() );
@@ -19,12 +19,12 @@ function amrlagr_scripts() {
 
 	// Load the scripts.
 	wp_deregister_script( 'jquery' );
-	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/files/js/jquery-3.1.0.js' );
+	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/files/js/jquery-3.1.0.min.js' );
 
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/files/bootstrap/js/bootstrap.js', array( 'jquery' ) );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/files/bootstrap/js/bootstrap.min.js', array( 'jquery' ) );
 
 	// IE10 viewport hack for Surface/desktop Windows 8 bug
-	wp_enqueue_script( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/files/bootstrap/js/ie10-viewport-bug-workaround.js', array( 'jquery' ) );
+	wp_enqueue_script( 'ie10-viewport-bug-workaround', get_template_directory_uri() . '/files/bootstrap/js/ie10-viewport-bug-workaround.min.js', array( 'jquery' ) );
 
 
   // custom script theme
@@ -47,4 +47,9 @@ width: 320px;
 </style>";
 }
 add_action( 'login_enqueue_scripts', 'cutom_login_logo' );
+
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/custom-posts-types.php';
 ?>

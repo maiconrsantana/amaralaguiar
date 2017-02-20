@@ -11,7 +11,7 @@
   <footer>
     <div class="row link-bar">
       <div class="d-xs-flex justify-content-xs-center mb-xs-3  justify-content-lg-start mb-lg-0 col-lg-5 row">
-        <a class="img-responsive" href="#"><img src="<?php echo get_template_directory_uri().'/files/img/logo.png'; ?>" alt="Amaral Aguiar - Sociedade de Advogados"></a>
+        <a class="img-responsive" href="<?php echo site_url(); ?>"><img src="<?php echo get_template_directory_uri().'/files/img/logo.png'; ?>" alt="Amaral Aguiar - Sociedade de Advogados"></a>
       </div>
       <div class="col-xs-12 text-xs-center mb-xs-5 text-md-left col-md-5 mb-md-0  col-lg-4 row">
         <ul class="navbar-nav col-xs-6 col-md-6">
