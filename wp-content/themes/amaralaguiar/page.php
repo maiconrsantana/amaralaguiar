@@ -6,6 +6,6 @@
 
 get_header(); ?>
 
-
+<?php die('page'); ?>
 
 <?php get_footer(); ?>

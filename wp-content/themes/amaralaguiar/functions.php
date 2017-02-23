@@ -4,6 +4,27 @@
  *
  */
 
+if ( ! function_exists( 'amrlagr_setup' ) ) :
+	function amrlagr_setup() {
+
+		/*
+		 * Enable support for Post Thumbnails on posts and pages.
+		 *
+		 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+		 */
+		add_theme_support( 'post-thumbnails' );
+		set_post_thumbnail_size( 1200, 9999 );
+		add_image_size( 'banner-atuacao', 1024, 390, true );
+
+		// This theme uses wp_nav_menu() in two locations.
+		/*register_nav_menus( array(
+			'primary' => __( 'Primary Menu', 'amrlagr' ),
+		) );*/
+
+	}
+endif; // etoile_setup
+add_action( 'after_setup_theme', 'amrlagr_setup' );
+
 
 /**
  * Enqueues scripts and styles.
@@ -33,6 +54,28 @@ function amrlagr_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'amrlagr_scripts' );
 
+//buscar áreas de atuação
+function amrlagr_atuacao(){
+	$args = array();
+	$args['post_type'] 	= 'area_atuacao';
+
+	$loop = new WP_Query( $args );
+
+	return $loop;
+}
+
+//ativar link da página atual no menu
+function amrlagr_active(){
+	$active = false;
+
+	if(is_home()){
+		$active = 'home';
+	}else if(is_single()){
+		$active = 'atuacao';
+	}
+
+	return $active;
+}
 
 // Custom WordPress Login Logo
 function cutom_login_logo() {

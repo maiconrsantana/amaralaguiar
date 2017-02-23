@@ -19,14 +19,29 @@
           </li>
         </ul>
         <ul class="col-md-12 justify-content-md-end navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item <?php if(amrlagr_active() == 'home'){?>active<?php }?>">
+          <a class="nav-link" href="<?php echo site_url(); ?>">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Escritório</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Atuação</a>
+        <li class="nav-item dropdown <?php if(amrlagr_active() == 'atuacao'){?>active<?php }?>">
+          <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Atuação
+          </a>
+
+          <?php // exibe páginas de atuação
+            $atuacao = amrlagr_atuacao();
+            if ($atuacao->have_posts()) :
+          ?>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+              <?php while ( $atuacao->have_posts() ) : $atuacao->the_post(); ?>
+                <a class="dropdown-item" href="<?php the_permalink($atuacao->ID) ?>"><?php the_title($atuacao->ID); ?></a>
+              <?php endwhile; ?>
+
+              </div>
+          <?php wp_reset_query(); endif;?>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Equipe</a>
@@ -40,16 +55,6 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Contato</a>
         </li>
-        <!--<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown link
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>-->
       </ul>
 
     </div>

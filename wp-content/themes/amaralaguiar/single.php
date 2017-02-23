@@ -1,11 +1,11 @@
 <?php
 /**
  * @package WordPress
- * @subpackage Votorantim
+ * @subpackage Amaral Aguiar
+ *
+ * Single Pages Redirect
  */
 
-get_header();
+get_template_part('single', $post_type);
+
 ?>
-
-
-<?php get_footer(); ?>
