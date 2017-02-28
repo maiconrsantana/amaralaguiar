@@ -55,13 +55,63 @@ function amrlagr_scripts() {
 add_action( 'wp_enqueue_scripts', 'amrlagr_scripts' );
 
 //buscar áreas de atuação
-function amrlagr_atuacao(){
+function amrlagr_atuacao($home=false){
 	$args = array();
 	$args['post_type'] 	= 'area_atuacao';
 
-	$loop = new WP_Query( $args );
+	if($home){
+		$args['meta_key'] 	= 'destaque_home';
+		$args['meta_value']	= 'Sim';
+	}
+
+$loop = new WP_Query( $args );
 
 	return $loop;
+}
+
+//buscar artigos
+function amrlagr_artigos(){
+	$args = array();
+	$args['post_type'] 	= 'post';
+
+	$loop = new WP_Query( $args );
+	return $loop;
+}
+
+//buscar categorias
+function amrlagr_categoria($id=false){
+	$args['hide_empty']	=	0;
+	$args['exclude']		=	1;
+	$args['orderby']		=	'ID';
+	$args['order']			=	'ASC';
+
+	//return $id; //print_r($array);
+	$html = '<ul class="row">';
+	if($id){
+		$args['fields']			=	'all_with_object_id';
+		$array = wp_get_post_categories($id, $args);
+
+		if(is_array($array) and count($array)){
+			foreach($array as $ar){
+				$img  = '<img src="'.get_wp_term_image($ar->term_id).'" alt="'.$ar->cat_name.'" > ';
+				$link = site_url('categoria/'.$ar->slug);
+				$html .= '<li><a href="'.$link.'">'.$img.'</a></li>';
+			}
+		}
+	}else{
+		$array = get_categories($args);
+
+		if(is_array($array) and count($array)){
+			foreach($array as $ar){
+				$img  = '<img src="'.get_wp_term_image($ar->term_id).'" alt="'.$ar->cat_name.'" > ';
+				$link = site_url('categoria/'.$ar->slug);
+				$html .= '<li class="col-sm-6 col-md-12"><a href="'.$link.'">'.$img.$ar->cat_name.' ('.$ar->category_count.')</a></li>';
+			}
+		}
+	}
+
+	$html .= '</ul>';
+	return $html;
 }
 
 //ativar link da página atual no menu
@@ -71,11 +121,24 @@ function amrlagr_active(){
 	if(is_home()){
 		$active = 'home';
 	}else if(is_single()){
-		$active = 'atuacao';
+		$active = get_post_type();
+	}else if(is_page()){
+		$active = get_the_title();
 	}
 
 	return $active;
 }
+
+/**
+ * Filter the except length to 20 words.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function amrlagr_custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'amrlagr_custom_excerpt_length', 999 );
 
 // Custom WordPress Login Logo
 function cutom_login_logo() {

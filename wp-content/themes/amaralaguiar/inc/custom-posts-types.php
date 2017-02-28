@@ -2,6 +2,39 @@
 
 //Custom Posts Types
 
+	//Alterar posts para artigos no Menu
+	function change_post_label() {
+	    global $menu;
+	    global $submenu;
+	    $menu[5][0] = 'Artigos';
+	    $submenu['edit.php'][5][0] = 'Artigos';
+	    $submenu['edit.php'][10][0] = 'Adicionar Artigo';
+	    $submenu['edit.php'][16][0] = 'Tags';
+	    echo '';
+	}
+	function change_post_object() {
+	    global $wp_post_types;
+	    $labels = &$wp_post_types['post']->labels;
+	    $labels->name = 'Artigos';
+	    $labels->singular_name = 'Artigo';
+	    $labels->add_new = 'Adicionar Artigo';
+	    $labels->add_new_item = 'Adicionar Artigo';
+	    $labels->edit_item = 'Editar Artigo';
+	    $labels->new_item = 'Artigo';
+	    $labels->view_item = 'Ver Artigo';
+	    $labels->search_items = 'Buscar Artigo';
+	    $labels->not_found = 'Nenhum Artigo encontrado';
+	    $labels->not_found_in_trash = 'Nenhum Artigo encontrado no Lixo';
+	    $labels->all_items = 'Todos Artigos';
+	    $labels->menu_name = 'Artigos';
+			$labels->menu_icon = 'dashicons-welcome-learn-more';
+	    $labels->name_admin_bar = 'Artigos';
+	}
+
+add_action( 'admin_menu', 'change_post_label' );
+add_action( 'init', 'change_post_object' );
+
+
 	//Banners Home
 	add_action('init', 'type_post_banners');
 

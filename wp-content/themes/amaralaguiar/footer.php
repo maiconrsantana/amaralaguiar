@@ -27,7 +27,7 @@
         </ul>
         <ul class="navbar-nav col-xs-6 col-md-6">
           <li class="nav-item">
-            <a class="nav-link" href="#">Artigos</a>
+            <a class="nav-link" href="<?php echo site_url('artigos'); ?>">Artigos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Dúvidas</a>

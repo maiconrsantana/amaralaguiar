@@ -5,7 +5,7 @@
   wp_enqueue_script( 'jCarousel','http://sorgalla.com/jcarousel/dist/jquery.jcarousel.min.js', array( 'jquery' ) );
 
   wp_enqueue_script( 'jCarouselSkeleton', 'http://sorgalla.com/jcarousel/examples/skeleton/jcarousel.skeleton.js', array( 'jCarousel' ) );
- ?>
+?>
 
 <script>
  $(function() {
@@ -22,26 +22,49 @@
  });
  </script>
 
-<div class="jcarousel-wrapper">
+<div class="row jcarousel-title">
+  <div class="col-sm-6">
+    <h2 class="custom_amag">Áreas de Atuação</h2>
+  </div>
 
-     <!-- Carousel -->
-     <div class="jcarousel">
-         <ul>
-             <li><img src="https://dummyimage.com/510x360/858585/fff.jpg&text=carousel+1" width="497" alt=""></li>
-             <li><img src="https://dummyimage.com/510x360/858585/fff.jpg&text=carousel+2" width="497" alt=""></li>
-             <li><img src="https://dummyimage.com/510x360/858585/fff.jpg&text=carousel+3" width="497" alt=""></li>
-             <li><img src="https://dummyimage.com/510x360/858585/fff.jpg&text=carousel+4" width="497" alt=""></li>
-             <li><img src="https://dummyimage.com/510x360/858585/fff.jpg&text=carousel+5" width="497" alt=""></li>
-         </ul>
-     </div>
+<div class="d-xs-flex justify-content-xs-end col-sm-6 ">
 
-     <!-- Prev/next controls -->
-     <a href="#" class="jcarousel-control-prev">&lsaquo; Prev</a>
-     <a href="#" class="jcarousel-control-next">Next &rsaquo;</a>
-
-     <!-- Pagination -->
-     <p class="jcarousel-pagination">
-         <!-- Pagination items will be generated in here -->
-     </p>
+    <!-- Prev/next controls -->
+    <a href="#" class="jcarousel-control-prev control"><img src="<?php echo get_template_directory_uri().'/files/img/arrow-left.png'; ?>" ></a>
+    <a href="#" class="jcarousel-control-next control"><img src="<?php echo get_template_directory_uri().'/files/img/arrow-right.png'; ?>" ></a>
 
 </div>
+
+</div>
+
+<?php // exibe páginas de atuação
+  $carousel_atuacao = amrlagr_atuacao(true);
+  if ($carousel_atuacao->have_posts()) :
+?>
+  <div class="jcarousel-wrapper">
+
+       <!-- Carousel -->
+       <div class="jcarousel">
+           <ul>
+              <?php while ( $carousel_atuacao->have_posts() ) : $carousel_atuacao->the_post(); ?>
+                <li>
+                  <div class="content">
+                      <div class="icon"><img src="<?php the_field('dest_icone'); ?>" ></div>
+                      <div class="title"><?php the_title(); ?></div>
+                      <div class="desc"><?php the_field('dest_descricao'); ?></div>                  </div>
+                  <img src="<?php the_field('dest_imagem_de_fundo'); ?>">
+                </li>
+              <?php endwhile; ?>
+           </ul>
+       </div>
+
+       <!-- Pagination -->
+       <!--<p class="jcarousel-pagination">-->
+           <!-- Pagination items will be generated in here -->
+       <!--</p>-->
+
+       <a href="<?php echo site_url('atuacao'); ?>" class="btn btn-primary">Ver Todas</a>
+  </div>
+<?php
+  endif;
+?>

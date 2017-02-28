@@ -1,0 +1,94 @@
+/* estilos página de artigos */
+.artigos-lista{
+    background-color: $color-white;
+    padding-top: 20px;
+    
+    .custom_amag{
+        margin-bottom: 1.5rem;
+    }
+    .container{
+        .img-fluid{
+            margin-bottom: 50px;
+        }
+        
+        .content-article{
+            color: $color-dark-grey;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            a{
+                color: $color-dark-grey;
+            }
+            h2{
+                font-size: 18px;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+            
+            .author{
+                font-size: 13px;
+            }
+            
+            .desc{
+                font-size: 14px;
+                margin-top: 30px;
+                margin-bottom: 20px;
+            }
+            
+            ul{
+                list-style: none;
+                padding: 0 15px;
+                
+                li{
+                    width: auto;
+                    float: left;
+                }
+            }
+        }
+    }
+}
+
+// Category Sidebar
+
+.cat_sidebar{
+    color: $color-dark-grey;
+    
+    h3{
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: 600;
+        padding: 5px;
+    }
+    
+    ul{
+        list-style: none;
+        padding: 0;
+        font-size: 13px;
+        li{
+            // ajustes tela > 768px
+            @media (min-width: $screen-sm-min){
+                padding: 5px 15px;
+            }
+            a{
+                color: $color-dark-grey;
+            }
+        }
+    }
+}
+
+//single post
+.artigos-lista{
+    .content-article{
+        color: $color-dark-grey;
+        h2{
+            margin-top: 20px;
+        }
+        
+        .autor{
+            .name{
+                font-size: 18px;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+        }
+    }
+}

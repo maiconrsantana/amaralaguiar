@@ -25,7 +25,7 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Escritório</a>
         </li>
-        <li class="nav-item dropdown <?php if(amrlagr_active() == 'atuacao'){?>active<?php }?>">
+        <li class="nav-item dropdown <?php if(amrlagr_active() == 'area_atuacao'){?>active<?php }?>">
           <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Atuação
           </a>
@@ -46,8 +46,8 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Equipe</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Artigos</a>
+        <li class="nav-item <?php if(amrlagr_active() == 'Artigos' or amrlagr_active() == 'post'){?>active<?php }?>">
+          <a class="nav-link" href="<?php echo site_url('artigos'); ?>">Artigos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Dúvidas</a>

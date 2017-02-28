@@ -28,6 +28,28 @@ get_header(); ?>
 
     </div>
   </section>
+
+  <section class="lista-atuacao">
+    <div class="container">
+        <h3>Atuação</h3>
+    </div>
+
+    <div class="container bg-image d-xs-flex align-items-xs-center" style="background-image: url(  <?php the_field('imagem_lista'); ?>);">
+      <div class="row">
+      <?php $middle = round(count(get_field('lista')) / 2) ?>
+
+        <ul class="col-sm-6">
+          <?php $i=1; foreach(get_field('lista') as $lista){ ?>
+
+              <li><?php echo $lista['linha']; ?></li>
+
+              <?php if($middle == $i){?></ul><ul class="col-sm-6"><?php }?>
+
+          <?php $i++;}?>
+        </ul>
+      </div>
+    </div>
+  </section>
   <!-- \/areas-atuacao-content\/ -->
 
 <?php get_footer(); ?>
