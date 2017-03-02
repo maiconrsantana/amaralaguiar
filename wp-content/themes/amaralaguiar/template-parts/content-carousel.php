@@ -2,7 +2,7 @@
   //register scripts
   wp_enqueue_style( 'jCarousel', get_template_directory_uri() . '/files/css/jcarousel.skeleton.css' );
 
-  wp_enqueue_script( 'jCarousel', get_template_directory_uri() . '/files/js/jquery.jcarousel.min.js', array( 'jquery' ) );
+  wp_enqueue_script( 'jCarousel', get_template_directory_uri() . '/files/js/jcarousel.min.js', array( 'jquery' ) );
 
   wp_enqueue_script( 'jCarouselSkeleton', get_template_directory_uri() . '/files/js/jcarousel.skeleton.js', array( 'jCarousel' ) );
 ?>
