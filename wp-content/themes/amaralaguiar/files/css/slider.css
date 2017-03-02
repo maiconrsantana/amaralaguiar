@@ -90,6 +90,11 @@
     padding: 20px 50px;
 }
 
+.ibox .sliderContent .sliderContainer a:focus{
+    color: #fff;
+    box-shadow: none;
+}
+
 /*ajuste no texto mobile*/
 @media screen and (max-width: 992px) {
     .ibox .sliderContent{

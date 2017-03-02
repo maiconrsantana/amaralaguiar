@@ -11,7 +11,11 @@ get_header(); ?>
 <!-- artigos-content -->
 <section class="artigos-lista">
   <div class="container">
-    <img src="<?php echo get_template_directory_uri().'/files/img/banner-artigos.jpg'; ?>" class="img-fluid" />
+    <?php if ( has_post_thumbnail() ) { ?>
+      <?php echo the_post_thumbnail( 'banner-atuacao', ['class' => 'img-fluid', 'title' => get_the_title()] ); ?>
+    <?php }else{ ?>
+      <img src="<?php echo get_template_directory_uri().'/files/img/banner-artigos.jpg'; ?>" class="img-fluid" />
+    <?php }?>
 
     <h2 class="custom_amag">Artigos & Informativos</h2>
   </div>

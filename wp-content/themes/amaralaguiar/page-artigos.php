@@ -1,8 +1,7 @@
 <?php
 /**
  * @package WordPress
- * @subpackage Amaral Aguiar
- */
+ * @subpackage Amaral Aguiar */
 
 get_header(); ?>
 
@@ -33,7 +32,7 @@ get_header(); ?>
               <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
-                <span class="author">por <?php the_author(); ?>, <?php the_date(); ?></span>
+                <span class="author">por <?php the_author(); ?>,  <?php echo get_the_date(); ?></span>
 
                 <div class="desc"><a href="<?php the_permalink(); ?>"><?php the_excerpt(); ?></a></div>
 

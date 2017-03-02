@@ -1,10 +1,10 @@
 <?php
   //register scripts
-  wp_enqueue_style( 'jCarousel', 'http://sorgalla.com/jcarousel/examples/skeleton/jcarousel.skeleton.css' );
+  wp_enqueue_style( 'jCarousel', get_template_directory_uri() . '/files/css/jcarousel.skeleton.css' );
 
-  wp_enqueue_script( 'jCarousel','http://sorgalla.com/jcarousel/dist/jquery.jcarousel.min.js', array( 'jquery' ) );
+  wp_enqueue_script( 'jCarousel', get_template_directory_uri() . '/files/js/jquery.jcarousel.min.js', array( 'jquery' ) );
 
-  wp_enqueue_script( 'jCarouselSkeleton', 'http://sorgalla.com/jcarousel/examples/skeleton/jcarousel.skeleton.js', array( 'jCarousel' ) );
+  wp_enqueue_script( 'jCarouselSkeleton', get_template_directory_uri() . '/files/js/jcarousel.skeleton.js', array( 'jCarousel' ) );
 ?>
 
 <script>
@@ -48,10 +48,12 @@
            <ul>
               <?php while ( $carousel_atuacao->have_posts() ) : $carousel_atuacao->the_post(); ?>
                 <li>
-                  <div class="content">
-                      <div class="icon"><img src="<?php the_field('dest_icone'); ?>" ></div>
-                      <div class="title"><?php the_title(); ?></div>
-                      <div class="desc"><?php the_field('dest_descricao'); ?></div>                  </div>
+                  <a href="<?php the_permalink(); ?>">
+                    <div class="content">
+                        <div class="icon"><img src="<?php the_field('dest_icone'); ?>" ></div>
+                        <div class="title"><?php the_title(); ?></div>
+                        <div class="desc"><?php the_field('dest_descricao'); ?></div>                    </div>
+                  </a>
                   <img src="<?php the_field('dest_imagem_de_fundo'); ?>">
                 </li>
               <?php endwhile; ?>

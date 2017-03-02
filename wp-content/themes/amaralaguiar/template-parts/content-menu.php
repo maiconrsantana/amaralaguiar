@@ -12,18 +12,18 @@
 
         <ul class="col-md-12 justify-content-md-end navbar-nav hidden-md-down">
           <li class="nav-item">
-            <a class="nav-link-top" href="tel: 11 4568-9012">(11) 4568-9012</a>
+            <a class="nav-link-top" href="tel: <?php the_field('telefone', 122); ?>"><?php the_field('telefone', 122); ?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link-top" href="#">Ligamos para você</a>
+            <a class="nav-link-top" href="<?php echo site_url('contato'); ?>">Ligamos para você</a>
           </li>
         </ul>
         <ul class="col-md-12 justify-content-md-end navbar-nav">
         <li class="nav-item <?php if(amrlagr_active() == 'home'){?>active<?php }?>">
           <a class="nav-link" href="<?php echo site_url(); ?>">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Escritório</a>
+        <li class="nav-item <?php if(amrlagr_active() == 'Escritório'){?>active<?php }?>">
+          <a class="nav-link" href="<?php echo site_url('escritorio'); ?>">Escritório</a>
         </li>
         <li class="nav-item dropdown <?php if(amrlagr_active() == 'area_atuacao'){?>active<?php }?>">
           <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,16 +44,16 @@
           <?php wp_reset_query(); endif;?>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Equipe</a>
+          <a class="nav-link" href="<?php echo site_url('equipe'); ?>">Equipe</a>
         </li>
         <li class="nav-item <?php if(amrlagr_active() == 'Artigos' or amrlagr_active() == 'post'){?>active<?php }?>">
           <a class="nav-link" href="<?php echo site_url('artigos'); ?>">Artigos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Dúvidas</a>
+        <li class="nav-item <?php if(amrlagr_active() == 'duvida'){?>active<?php }?>">
+          <a class="nav-link" href="<?php echo site_url('duvidas'); ?>">Dúvidas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contato</a>
+          <a class="nav-link" href="<?php echo site_url('contato'); ?>">Contato</a>
         </li>
       </ul>
 

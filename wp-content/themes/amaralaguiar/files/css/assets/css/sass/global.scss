@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Open Sans', sans-serif; 
-    background: $color-bg url(#{$url-img}/background.jpg) no-repeat top center;
+    background: $color-bg url(#{$url-img}/background.jpg) no-repeat top center; 
 }
 
 //ajueste menu mobile
@@ -23,7 +23,39 @@ h2.custom_amag{
     }
 }
 
-
+.call-to-action{
+    margin: 35px 0 0 0;
+    background: url(#{$url-img}/bg_call2action.jpg) no-repeat top center;
+    height: 270px;
+    padding: 35px 0;
+    
+    h3{
+        font-size: 30px;
+        color: $color-white;
+        font-weight: 800px;
+        margin: 0 auto;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    
+    .btn{
+        margin: 15px auto;
+        background-color: $color-green;
+        border-color: $color-green;
+        border-radius: 0;
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 15px 50px;
+        display: block;
+        width: 190px;
+        
+        &:focus{
+            color: $color-white;
+            box-shadow: none;
+        }
+    }
+}
 
 //custom container
 .container-main{

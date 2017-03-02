@@ -6,6 +6,6 @@
 
 get_header(); ?>
 
-<?php die('index'); ?>
+<?php echo get_post_type(); die(); ?>
 
 <?php get_footer(); ?>

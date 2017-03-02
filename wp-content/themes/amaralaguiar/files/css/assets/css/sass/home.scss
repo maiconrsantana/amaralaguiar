@@ -61,6 +61,11 @@
         padding: 15px 50px;
         display: block;
         width: 190px;
+        
+        &:focus{
+            color: $color-white;
+            box-shadow: none;
+        }
     }
 }
 

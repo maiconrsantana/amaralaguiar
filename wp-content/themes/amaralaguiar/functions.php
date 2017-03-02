@@ -70,16 +70,20 @@ $loop = new WP_Query( $args );
 }
 
 //buscar artigos
-function amrlagr_artigos(){
+function amrlagr_artigos($limit=false){
 	$args = array();
 	$args['post_type'] 	= 'post';
+
+	if($limit){
+		$args['posts_per_page'] 	= $limit;
+	}
 
 	$loop = new WP_Query( $args );
 	return $loop;
 }
 
 //buscar categorias
-function amrlagr_categoria($id=false){
+function amrlagr_categoria($id=false, $current=false){
 	$args['hide_empty']	=	0;
 	$args['exclude']		=	1;
 	$args['orderby']		=	'ID';
@@ -103,9 +107,11 @@ function amrlagr_categoria($id=false){
 
 		if(is_array($array) and count($array)){
 			foreach($array as $ar){
+				if($current == true && $current->cat_ID == $ar->term_id){ $class = 'active'; }else{ $class = ''; }
+
 				$img  = '<img src="'.get_wp_term_image($ar->term_id).'" alt="'.$ar->cat_name.'" > ';
 				$link = site_url('categoria/'.$ar->slug);
-				$html .= '<li class="col-sm-6 col-md-12"><a href="'.$link.'">'.$img.$ar->cat_name.' ('.$ar->category_count.')</a></li>';
+				$html .= '<li class="col-sm-6 col-md-12 '.$class.'"><a href="'.$link.'">'.$img.$ar->cat_name.' ('.$ar->category_count.')</a></li>';
 			}
 		}
 	}
@@ -124,6 +130,8 @@ function amrlagr_active(){
 		$active = get_post_type();
 	}else if(is_page()){
 		$active = get_the_title();
+	}else if(is_archive()){
+		$active = get_post_type();
 	}
 
 	return $active;
@@ -139,6 +147,55 @@ function amrlagr_custom_excerpt_length( $length ) {
     return 20;
 }
 add_filter( 'excerpt_length', 'amrlagr_custom_excerpt_length', 999 );
+
+
+//função para envio de mensagens dos formulários
+function sendForm()
+{
+	//print_r($_POST); die();
+	$headers  = 'MIME-Version: 1.0' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	$headers .= 'To: Etoile <'.$_POST['email_to'].'>' . "\r\n";
+	$headers .= 'From: Contato via Site' . "\r\n";
+
+	$subject = 'Contato via Site - '.$_POST['subject'];
+
+	$message = '<b>Nome:</b> '.$_POST['name'].'<br>';
+	$message .= '<b>Email:</b> '.$_POST['email'].'<br>';
+	$message .= '<b>Telefone:</b> '.$_POST['phone'].'<br>';
+	$message .= '<b>Mensagem:</b> '.nl2br($_POST['message']).'<br>';
+
+	if(wp_mail( MAIL_TO, $subject, $message, $headers )){
+		$get = '?envio=ok';
+	}else{
+		$get = '?envio=erro';
+	}
+
+	wp_redirect( $_POST['return'].$get );
+	die();
+}
+//Adiciona a funcao extra aos hooks do WordPress.
+add_action('admin_post_sendForm', 'sendForm');
+add_action('admin_post_nopriv_sendForm', 'sendForm');
+
+
+//texto instrução imagem destacada
+function add_featured_image_instruction( $content ) {
+    return $content .= '<p>Tamanho recomendado 1024px X 390px</p>';
+}
+add_filter( 'admin_post_thumbnail_html', 'add_featured_image_instruction');
+
+
+/**
+* adiciona link Tutorial no menu ferramentas
+*/
+
+function tutorial_admin_menu() {
+    global $submenu;
+    $url = get_template_directory_uri() . '/files/Tutorial.pdf';
+    $submenu['tools.php'][] = array('Tutorial', 'manage_options', $url);
+}
+add_action('admin_menu', 'tutorial_admin_menu');
 
 // Custom WordPress Login Logo
 function cutom_login_logo() {

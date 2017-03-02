@@ -9,6 +9,9 @@
                 color: $color-dark-grey;
             }
         }
+        
+        margin-top: 15px;
+        
         .nav-link{
             font-size: 13px;
             font-weight: 600;
@@ -68,6 +71,8 @@
                 top: 75%;
                 left: 15px;
             }
+            
+            border: 0;
             
             a{
                 text-transform: uppercase;

@@ -16,13 +16,13 @@
       <div class="col-xs-12 text-xs-center mb-xs-5 text-md-left col-md-5 mb-md-0  col-lg-4 row">
         <ul class="navbar-nav col-xs-6 col-md-6">
           <li class="nav-item">
-            <a class="nav-link" href="#">Escritório</a>
+            <a class="nav-link" href="<?php echo site_url('escritorio'); ?>">Escritório</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Atuação</a>
+            <a class="nav-link" href="<?php echo site_url('atuacao'); ?>">Atuação</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Equipe</a>
+            <a class="nav-link" href="<?php echo site_url('equipe'); ?>">Equipe</a>
           </li>
         </ul>
         <ul class="navbar-nav col-xs-6 col-md-6">
@@ -30,20 +30,20 @@
             <a class="nav-link" href="<?php echo site_url('artigos'); ?>">Artigos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Dúvidas</a>
+            <a class="nav-link" href="<?php echo site_url('duvidas'); ?>">Dúvidas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contato</a>
+            <a class="nav-link" href="<?php echo site_url('contato'); ?>">Contato</a>
           </li>
         </ul>
       </div>
       <div class="col-xs-12 text-xs-center text-md-left  col-md-6 col-lg-3 row no-padding">
         <div class="col-xs-12 no-padding">
-            Rua Nestor de Barros, 116 - Conj. 144 Jd. Anália Franco - São Paulo/SP
+            <?php the_field('endereco', 122); ?>
         </div>
         <div class="col-xs-12 no-padding">
-           <a class="nav-link mail no-padding" href="mailto: escritorio@amaraleaguiard.com.br">escritorio@amaraleaguiard.com.br</a>
-           <a class="nav-link tel no-padding" href="tel: 11 4568-9012">+55 (11) 4568-9012</a>
+           <a class="nav-link mail no-padding" href="mailto: <?php the_field('email', 122); ?>"><?php the_field('email', 122); ?></a>
+           <a class="nav-link tel no-padding" href="tel: <?php the_field('telefone', 122); ?>"><?php the_field('telefone', 122); ?></a>
         </div>
       </div>
     </div>

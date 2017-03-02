@@ -31,9 +31,8 @@
 	    $labels->name_admin_bar = 'Artigos';
 	}
 
-add_action( 'admin_menu', 'change_post_label' );
-add_action( 'init', 'change_post_object' );
-
+	add_action( 'admin_menu', 'change_post_label' );
+	add_action( 'init', 'change_post_object' );
 
 	//Banners Home
 	add_action('init', 'type_post_banners');
@@ -69,9 +68,9 @@ add_action( 'init', 'change_post_object' );
 			'supports' => array('title', 'revisions')
     );
 
-register_post_type( 'banners' , $args );
-flush_rewrite_rules();
-}
+	register_post_type( 'banners' , $args );
+	flush_rewrite_rules();
+	}
 
 //Áreas de Atuação
 add_action('init', 'type_post_areas_atuacao');
@@ -108,6 +107,44 @@ function type_post_areas_atuacao() {
 	);
 
 register_post_type( 'area_atuacao' , $args );
+flush_rewrite_rules();
+}
+
+//Dúvidas
+add_action('init', 'type_post_duvidas');
+
+function type_post_duvidas() {
+	$labels = array(
+		'name' => _x('Dúvidas', 'post type general name'),
+		'singular_name' => _x('Dúvida', 'post type singular name'),
+		'add_new' => _x('Adicionar Nova', 'Nova Dúvida'),
+		'add_new_item' => __('Nova Dúvida'),
+		'edit_item' => __('Editar Dúvida'),
+		'new_item' => __('Nova Dúvida'),
+		'view_item' => __('Ver Dúvida'),
+		'search_items' => __('Procurar Dúvida'),
+		'not_found' =>  __('Nenhuma Dúvida encontrada'),
+		'not_found_in_trash' => __('Nenhuma Dúvida encontrada na lixeira'),
+		'parent_item_colon' => '',
+		'menu_name' => 'Dúvidas'
+	);
+
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'public_queryable' => true,
+		'show_ui' => true,
+		'query_var' => 'duvidas',
+		'rewrite' => array('slug' => 'duvidas','with_front' => false),
+		'capability_type' => 'post',
+		'has_archive' => true,
+		'hierarchical' => false,
+		'menu_position' => 6,
+		'menu_icon' => 'dashicons-editor-help',
+		'supports' => array('title', 'revisions')
+	);
+
+register_post_type( 'duvida' , $args );
 flush_rewrite_rules();
 }
 

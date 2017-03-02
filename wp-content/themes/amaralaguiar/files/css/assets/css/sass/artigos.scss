@@ -1,4 +1,7 @@
 /* estilos página de artigos */
+.artigos-lista.atuacao .container .img-fluid{
+    margin-bottom: 0;
+}
 .artigos-lista{
     background-color: $color-white;
     padding-top: 20px;
@@ -45,6 +48,30 @@
             }
         }
     }
+    
+    .btn{
+        float: right;
+        background-color: $color-green;
+        border-color: $color-green;
+        border-radius: 0;
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 15px 15px;
+        display: block;
+        width: 190px;
+        text-align: center;
+        
+        @media(max-width:568px){
+            float:none;
+            margin: 0 auto;
+        }
+        
+        &:focus{
+            color: $color-white;
+            box-shadow: none;
+        }
+    }
 }
 
 // Category Sidebar
@@ -70,6 +97,11 @@
             }
             a{
                 color: $color-dark-grey;
+            }
+            
+            &.active{
+                font-weight: 600;
+                text-decoration: underline;
             }
         }
     }
