@@ -22,7 +22,7 @@ get_header(); ?>
       <div class="pull-xs-0 pull-md-4 pull-lg-3 col-sm">
         <div class="row">
         <?php
-          
+
           if ( have_posts() ) :
 
         		// Start the Loop.
@@ -41,6 +41,10 @@ get_header(); ?>
             </div>
         <?php
             endwhile;
+          else:
+
+          echo '<div class="col-sm-12"> <h2>Nenhum conteúdo encontrado</h2> </div>';
+
           endif;
         ?>
         </div>

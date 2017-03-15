@@ -52,7 +52,8 @@
                     <div class="content">
                         <div class="icon"><img src="<?php the_field('dest_icone'); ?>" ></div>
                         <div class="title"><?php the_title(); ?></div>
-                        <div class="desc"><?php the_field('dest_descricao'); ?></div>                    </div>
+                        <div class="desc"><?php the_field('dest_descricao'); ?></div>
+                    </div>
                   </a>
                   <img src="<?php the_field('dest_imagem_de_fundo'); ?>">
                 </li>
@@ -65,7 +66,7 @@
            <!-- Pagination items will be generated in here -->
        <!--</p>-->
 
-       <a href="<?php echo site_url('atuacao'); ?>" class="btn btn-primary">Ver Todas</a>
+       <!--<a href="<?php echo site_url('atuacao'); ?>" class="btn btn-primary">Ver Todas</a>-->
   </div>
 <?php
   endif;

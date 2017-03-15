@@ -107,7 +107,7 @@ function amrlagr_categoria($id=false, $current=false){
 
 		if(is_array($array) and count($array)){
 			foreach($array as $ar){
-				if($current == true && $current->cat_ID == $ar->term_id){ $class = 'active'; }else{ $class = ''; }
+				if($current == true && $current == $ar->term_id){ $class = 'active'; }else{ $class = ''; }
 
 				$img  = '<img src="'.get_wp_term_image($ar->term_id).'" alt="'.$ar->cat_name.'" > ';
 				$link = site_url('categoria/'.$ar->slug);
