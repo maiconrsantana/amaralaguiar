@@ -23,10 +23,15 @@
 
     <div class="container duvidas">
         <?php
-            if ( have_posts() ) :
+			$args['post_type'] = 'duvida';
+			$args['posts_per_page'] = -1;
+
+			$posts = new WP_Query( $args ); 
+	
+            if ( $posts->have_posts() ) :
               $i=0;
           		// Start the Loop.
-          		while ( have_posts() ) : the_post();
+          		while ( $posts->have_posts() ) : $posts->the_post();
         ?>
             <div class="panel-group wrap" id="bs-collapse">
 
@@ -62,3 +67,4 @@
   <!-- \/duvidas-content\/ -->
 
 <?php get_footer(); ?>
+
